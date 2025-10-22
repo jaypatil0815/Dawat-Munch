@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <script src="assets/js/language.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .login-container {
+      position: relative;
+      background: rgba(255, 255, 255, 0.95);
+      width: 350px;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      z-index: 10;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h2 {
+      text-align: center;
+      color: #d84315;
+      margin-bottom: 24px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+      font-weight: 500;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #d84315;
+      outline: none;
+      box-shadow: 0 0 8px #d84315aa;
+    }
+    button {
+      width: 100%;
+      padding: 0.85rem;
+      background: #d84315;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: background 0.3s ease;
+      box-shadow: 0 5px 15px #d84315aa;
+    }
+    button:hover {
+      background: #bf360c;
+      box-shadow: 0 8px 20px #bf360ccc;
+    }
+    .signup-link {
+      text-align: center;
+      margin-top: 1.3rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .signup-link a {
+      color: #d84315;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .signup-link a:hover {
+      color: #bf360c;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="login-container">
+    <h2 data-lang-key="welcomeToDawat">Welcome to Dawat</h2>
+    <form action="http://localhost:5502/login" method="POST">
+      <label for="username" data-lang-key="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required data-lang-key="enterUsername" />
+
+      <label for="password" data-lang-key="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required data-lang-key="enterPassword" />
+
+      <button type="submit" data-lang-key="login">Login</button>
+    </form>
+    <div class="signup-link">
+      <span data-lang-key="dontHaveAccount">Don't have an account?</span> <a href="signup.html" data-lang-key="signUp">Sign Up</a>
+    </div>
+  </div>
+  <script>
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const username = form.username.value;
+    const password = form.password.value;
+
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message === 'Login successful') {
+          alert('Login successful! Redirecting to home page.');
+          window.location.href = 'index.html'; // make sure home.html exists
+        } else {
+          alert('Login failed: ' + (data.error || 'Unknown error'));
+        }
+      })
+      .catch((error) => {
+        alert('Login failed. Please try again later.');
+        console.error('Login error:', error);
+      });
+  });
+</script>
+</body>
+</html>

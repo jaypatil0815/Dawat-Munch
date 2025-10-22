@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reserve Your Table - Eat You Restaurant</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('./assets/imagess/reserve.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .reservation-container {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    padding: 3rem;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  }
+
+  .reservation-header {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #fff;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    outline: none;
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transition: 0.3s ease;
+  }
+  
+  .form-group input::placeholder {
+    color: rgba(255,255,255,0.7);
+  }
+  
+  /* Make browser-native date/time picker icon visible */
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+  /* For better visibility of date/time text before selection */
+  input[type="date"], input[type="time"]{
+    color-scheme: dark;
+  }
+
+  button {
+    margin-top: 1rem;
+    width: 100%;
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    border: none;
+    padding: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  #reservationMessage {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 15px;
+    font-weight: 600;
+    display: none;
+    text-align: center;
+  }
+
+  #reservationMessage.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+  }
+
+  #reservationMessage.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+  }
+</style>
+<script src="assets/js/language.js" defer></script>
+</head>
+<body>
+
+<div class="reservation-container" role="main">
+  <h1 class="reservation-header" data-lang-key="reserveTable">Reserve Your Table</h1>
+  <form id="reservationForm" aria-label="Table Reservation Form" novalidate>
+    <div class="form-group">
+      <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" placeholder="Your Name" data-lang-key="yourName" />
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" placeholder="Your Email" data-lang-key="yourEmail" />
+    </div>
+    <div class="form-group">
+      <input type="number" id="guests" name="guests" min="1" max="20" required aria-required="true" placeholder="Number of Guests" data-lang-key="numberOfGuests"/>
+    </div>
+    <div class="form-group">
+      <label for="date" data-lang-key="date">Date <sup>*</sup></label>
+      <input type="date" id="date" name="date" required aria-required="true" />
+    </div>
+    <div class="form-group">
+      <label for="time" data-lang-key="time">Time <sup>*</sup></label>
+      <input type="time" id="time" name="time" required aria-required="true" />
+    </div>
+
+    <button type="submit" aria-label="Book Table Now" data-lang-key="bookTableButton">Book Table</button>
+  </form>
+  
+  <div id="reservationMessage" role="alert" aria-live="polite"></div>
+</div>
+
+<script>
+  document.getElementById('reservationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const reservationData = {
+      name: this.name.value.trim(),
+      email: this.email.value.trim(),
+      guests: this.guests.value,
+      date: this.date.value,
+      time: this.time.value
+    };
+
+    fetch('http://localhost:3000/api/reservation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reservationData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      const msgBox = document.getElementById('reservationMessage');
+      if (data.message) {
+        msgBox.textContent = 'Your table has been reserved successfully!';
+        msgBox.className = 'success';
+        msgBox.style.display = 'block';
+        document.getElementById('reservationForm').style.display = 'none'; // Hide form on success
+      } else {
+        msgBox.textContent = data.error || 'Reservation failed. Please try again.';
+        msgBox.className = 'error';
+        msgBox.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      const msgBox = document.getElementById('reservationMessage');
+      msgBox.textContent = 'Reservation failed due to a server error.';
+      msgBox.className = 'error';
+      msgBox.style.display = 'block';
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dawat Munch-Grab a Bite, Anytime!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="./media.css" />
+    <script src="assets/js/language.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img class="dish" src="images/dish.png" alt="" />
+
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="" srcset="" draggable="false" />
+                </div>>
+                <div id="menu-icon"><i class="fas fa-bars fa-2x"></i></div>
+                <ul class="lists" id="nav-menu">
+                    <li><a href="" class="nav-link" data-lang-key="home">Home</a></li>
+                    <li><a href="#menu" class="nav-link" data-lang-key="shop">Shop</a></li>
+                    <li><a href="/fast_food.html" class="nav-link" data-lang-key="fastFood">Fast Food</a></li>
+                    <li><a href="#chef" class="nav-link" data-lang-key="testimonials">Testimonials</a></li>
+                    <li><a href="/contact.html" class="nav-link" data-lang-key="contact">contact</a></li>
+                    <li>
+                        <a href="#events" class="nav-link" data-lang-key="about">about<i></i
+							></a>
+                    </li>
+                    <!-- Add this to your existing navigation -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html" data-lang-key="feedback">
+                            <i></i> Feedback
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="login.html" data-lang-key="login"><i></i> Login</a></li>
+                </ul>
+            </nav>
+
+            <div class="heading">
+                <h1 data-lang-key="heroTitle"> The Dawat's <br />resturant</h1>
+            </div>
+
+            <div class="booking">
+                <div class="content">
+                    <h5 class="chair" data-lang-key="bookTable">book a table directly</h5>
+                    <p>(033) 216 654</p>
+                    <h5 class="note">
+                        <span data-lang-key="openingHours">opening hours</span> <span data-lang-key="monFri">mon-fri:</span> 09:00 - 21:00 /
+                        <span data-lang-key="weekend">weekend:</span>09:00 - 22:00
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="shop">
+        <div class="container">
+            <div class="all-content">
+                <article class="content">
+                    <h3 data-lang-key="cookingTitle">
+                        cooking is the art of <br /> adjustment
+                    </h3>
+                    <p data-lang-key="cookingText">
+                        Cooking is the process of producing safe and edible food by preparing and combining ingredients, and (in most cases) applying heat. Cooking is a means of processing food, without which many foods would be unfit for human consumption.
+                        <br> A restaurant cook is someone whose responsibility it is to prepare and cook various appetizers, entrees and desserts; to ensure the ingredients used are fresh; to make sure the work area is clean; and to have any necessary
+                        equipment readily available.
+                    </p>
+                    <h5 data-lang-key="masterChef">XYZ XYZ <span>- master chief at resturant</span></h5>
+                    <button class="btn" onclick="window.location.href='reservation.html'" data-lang-key="reservation">reservation</button>
+                </article>
+                <div class="video-content">
+                    <div class="btn-container">
+                        <button class="btn" data-lang-key="play">
+								play <i class="fas fa-caret-right"></i>
+							</button>
+                    </div>
+                    <div class="img">
+                        <a href="https://www.youtube.com/watch?v=53nwh1aHCU8" target="_blank"><img src="images/video-bg.jpg" alt="" class="img-responsive" draggable="false" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <div class="all-content">
+                <h2 data-lang-key="menuTitle">delicious flavour of autumn</h2>
+
+                <div class="slider">
+                    <div class="right" id="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="left" id="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="moved-cards">
+                        <div class="cards-container">
+                            <div class="card">
+                                <img src="images/card-2.jpg" alt="" class="img-responsive" />
+                                <div class="price"><span>100/-</span></div>
+                                <div class="content">
+                                    <h4>super bbq grill no smoke</h4>
+                                    <p>
+                                        Enjoy the perfect BBQ experience with zero smoke and full flavor.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="images/card-3.jpg" alt="" class="img-responsive" />
+                                <div class="price"><span>250/-</span></div>
+                                <div class="content">
+                                    <h4>Fajita Dish</h4>
+                                    <p>
+                                        Sizzling fajitas served fresh with vibrant flavors and perfect seasoning.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="images/card-1.jpg" alt="" class="img-responsive" />
+                                <div class="price"><span>200/-</span></div>
+                                <div class="content">
+                                    <h4>Bistecca Tuscan Steakhouse</h4>
+                                    <p>
+                                        Authentic Tuscan steakhouse experience with premium, perfectly grilled cuts.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="images/fish.png" alt="" class="img-responsive" />
+                                <div class="price"><span>190/-</span></div>
+                                <div class="content">
+                                    <h4>Fish Fry</h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, quis!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="images/card-3.jpg" alt="" class="img-responsive" />
+                                <div class="price"><span>320/-</span></div>
+                                <div class="content">
+                                    <h4>super bbq grill no smoke</h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, quis!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img src="images/card-1.jpg" alt="" class="img-responsive" />
+                                <div class="price"><span>280/-</span></div>
+                                <div class="content">
+                                    <h4>super bbq grill no smoke</h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, quis!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="link">
+                    <a href="#" data-lang-key="viewFullMenu">view full menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="content">
+            <div class="icon"><i class="fas fa-quote-left"></i></div>
+            <h3 data-lang-key="testimonialsTitle">i love cooking for myself and love cooking for my family</h3>
+            <p class="name" data-lang-key="testimonialsName">Mridul Paul</p>
+        </div>
+    </section>
+
+    <section id="chef">
+        <div class="container">
+            <div class="all-content">
+                <div class="image">
+                    <img src="images/chief.png" alt="" class="img-responsive" />
+                </div>
+                <article class="content">
+                    <h2 class="heading" data-lang-key="chefTitle">the food's masters say about us</h2>
+
+                    <div class="chef-main-slider">
+                        <div class="inner-chef-slider">
+                            <div class="moved-chef-slider">
+                                <div class="slider-item">
+                                    <q data-lang-key="chefQuote1">The Hospitality Is Also Awasome Like It's Food!</q>
+                                    <p data-lang-key="chefText1">The food masters say about us that the hospitality matches the excellence of our cuisine, making every visit a truly delightful experience. From the moment you arrive, the warmth and care of our staff complement the rich flavors and quality of our dishes, ensuring an unforgettable dining experience.
+                                    </p>
+                                    <h5 class="name" data-lang-key="chefName1">
+                                        Praveen Rawat - <span>Head Chef , Airoli, Navi Mumbai</span>
+                                    </h5>
+                                </div>
+
+                                <div class="slider-item">
+                                    <q data-lang-key="chefQuote2">The Quality Of The Food Is Awasome</q>
+                                    <p data-lang-key="chefText2">
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati suscipit totam dignissimos quod aliquam, cumque voluptatibus aspernatur eveniet enim accusamus exercitationem a, illo doloremque facilis consequuntur ipsum ex cum inventore, animi deserunt
+                                        quam saepe! Ab quos earum illum quidem laborum.
+                                    </p>
+                                    <h5 class="name" data-lang-key="chefName2">
+                                        Rajib Biswas - <span>Owner Of Taj Bengal</span>
+                                    </h5>
+                                </div>
+                                <div class="slider-item">
+                                    <q data-lang-key="chefQuote3">The Ambience Is Out Of The World With It's Food!</q>
+                                    <p data-lang-key="chefText3">
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati suscipit totam dignissimos quod aliquam, cumque voluptatibus aspernatur eveniet enim accusamus exercitationem a, illo doloremque facilis consequuntur ipsum ex cum inventore, animi deserunt
+                                        quam saepe! Ab quos earum illum quidem laborum.
+                                    </p>
+                                    <h5 class="name" data-lang-key="chefName3">
+                                        Rohit Khandella - <span>Head Chef , JW Marriot</span>
+                                    </h5>
+                                </div>
+                                <div class="slider-item">
+                                    <q data-lang-key="chefQuote4">Best Experience</q>
+                                    <p data-lang-key="chefText4">
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati suscipit totam dignissimos quod aliquam, cumque voluptatibus aspernatur eveniet enim accusamus exercitationem a, illo doloremque facilis consequuntur ipsum ex cum inventore, animi deserunt
+                                        quam saepe! Ab quos earum illum quidem laborum.
+                                    </p>
+                                    <h5 class="name" data-lang-key="chefName4">
+                                        ahmed ali - <span>winner master chef 2022</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="next"><i class="fas fa-arrow-right"></i></div>
+                        <div class="prev"><i class="fas fa-arrow-left"></i></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <div class="container">
+            <div class="cards">
+                <div class="card">
+                    <div class="imgBox">
+                        <img src="images/img-1.jpg" alt="" class="" />
+                    </div>
+                    <div class="content">
+                        <h3 data-lang-key="event1Title">Beef souteed onions - let's enjoy!</h3>
+                        <p data-lang-key="event1Location">HUDCO Bhavan , Biswa Bangla Sarani , Newtown , Navi Mumbai</p>
+                        <p data-lang-key="event1Time">10:00am - 14:00pm</p>
+                        <p data-lang-key="event1Date">Mondey Sept 25th, 2022</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="imgBox">
+                        <img src="images/img-2.jpg" alt="" class="" />
+                    </div>
+                    <div class="content">
+                        <h3 data-lang-key="event2Title">Become a super chef is easy with us</h3>
+                        <p data-lang-key="event2Location">150/A AJC Bose Road , Navi Mumbai</p>
+                        <p data-lang-key="event2Time">10:00am - 14:00pm</p>
+                        <p data-lang-key="event2Date">Mondey Sept 25th, 2022</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="imgBox">
+                        <img src="images/img-3.jpg" alt="" class="" />
+                    </div>
+                    <div class="content">
+                        <h3 data-lang-key="event3Title">Art photography in foody</h3>
+                        <p data-lang-key="event3Location">123 MG Road , Navi Mumbai</p>
+                        <p data-lang-key="event3Time">10:00am - 14:00pm</p>
+                        <p data-lang-key="event3Date">Monday Sept 25th, 2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 data-lang-key="contactTitle">we always here to help you</h2>
+        <div class="container">
+            <article>
+                <div class="all-content">
+                    <div class="content-1">
+                        <h3 data-lang-key="contactLocation">Navi Mumbai, <span>India</span></h3>
+                        <p data-lang-key="contactAddress">
+                            Building, #24, 1st Floor, Near Airoli Station, Airoli, Navi Mumbai 400708
+                        </p>
+                        <p class="email" data-lang-key="contactEmail">email: <span>info@thedawatsresturant.com</span></p>
+
+                    </div>
+                    <div class="content-2">
+                        <h5 data-lang-key="callDirectly">call directly</h5>
+                        <h4 data-lang-key="phoneNumber">+(91) 21665 43242</h4>
+                        <h5 data-lang-key="lunchService">Lunch Service</h5>
+                        <p data-lang-key="lunchTime">Friday, Saturday, Sunday booking from 12:00pm - 01:03pm</p>
+                        <h5 data-lang-key="dinnerService">Dinner Service</h5>
+                        <p data-lang-key="dinnerTime">Daily: Booking from 06:00pm - 09:30pm</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4508.544058618981!2d72.99624158367162!3d19.158415748907487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd3c6cf8c72148aa5!2sAiroli%20local%20train%20station!5e0!3m2!1sen!2sin!4v1664209446417!5m2!1sen!2sin"
+            width="100%" height="450" frameborder="0" style="border: 0" allowfullscreen="" aria-hidden="false" tabindex="0">
+			</iframe>
+    </section>
+    <!-- Add this in your main content area -->
+    <section class="feedback-cta py-5">
+        <div class="container text-center">
+            <h3 data-lang-key="feedbackTitle">How was your experience?</h3>
+            <p data-lang-key="feedbackSubtitle">We'd love to hear from you!</p>
+            <a href="feedback.html" class="btn btn-primary btn-lg" data-lang-key="feedbackButton">
+                <i class="fas fa-star"></i> Share Your Feedback
+            </a>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="all-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="" />
+                </div>
+                <ul>
+                    <li><a href="reservation.html" style="text-decoration:none; color: white;" data-lang-key="footerReservation">reservation</a> </li>
+                    <li><a href="feedback.html" style="text-decoration:none; color:white; " data-lang-key="footerFeedback">Feedback</a></li>
+                    <li><a href="contact.html" style="text-decoration:none; color:white; " data-lang-key="footerContacts">Contacts</a></li>
+                    <li><a href="#" style="text-decoration:none; color:white; " data-lang-key="footerReview">review & media</a></li>
+                </ul>
+                <div class="icons">
+                    <span><i class="fab fa-twitter"></i></span>
+                    <span><i class="fab fa-facebook"></i></span>
+                    <span><i class="fab fa-google-plus-g"></i></span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </div>
+                <p data-lang-key="footerCopyright"><i class="far fa-copyright"></i> The Dawat's resturant | All rights is reserved</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

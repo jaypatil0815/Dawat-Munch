@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback - Eat You Restaurant</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <script src="assets/js/language.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('./assets/imagess/feedback.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            padding: 3rem 1rem; /* Add padding for better spacing on scroll */
+        }
+
+        .feedback-container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            color: white;
+        }
+
+        .feedback-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .feedback-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .feedback-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1 1 250px; /* Flex properties for responsive layout */
+        }
+
+        .form-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            transition: 0.3s ease;
+        }
+        
+        .form-control::placeholder { color: rgba(255, 255, 255, 0.7); }
+        input[type="date"] { color-scheme: dark; }
+        
+        .rating-section h4, .form-group h4 {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .star {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .star:hover, .star.active {
+            color: #ffd700;
+            transform: scale(1.2);
+        }
+        
+        .feedback-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        
+        .category-chip {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            border-radius: 20px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .category-chip.selected, .category-chip:hover {
+            background: linear-gradient(45deg, #ff512f, #dd2476);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .recommendation-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .recommend-label {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        input[name="recommendation"] { display: none; }
+        input[name="recommendation"]:checked + .recommend-label {
+             background: linear-gradient(45deg, #16a085, #27ae60);
+        }
+        
+        button[type="submit"] {
+            margin-top: 2rem;
+            width: 100%;
+            background: linear-gradient(45deg, #ff512f, #dd2476);
+            border: none;
+            padding: 1rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .message-box {
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-weight: 600;
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .message-box.success { color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; }
+        .message-box.error { color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <div class="feedback-header">
+            <h2 data-lang-key="customerFeedback"><i class="fas fa-comment-dots"></i> Share Your Experience</h2>
+            <p data-lang-key="shareExperience">Your feedback helps us serve you better!</p>
+        </div>
+        
+        <form id="feedbackForm">
+            <!-- Customer Information -->
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="customerName" placeholder="Your Name *" required data-lang-key="yourName">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="customerEmail" placeholder="Your Email" data-lang-key="yourEmail">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="visitDate" data-lang-key="date">Visit Date</label>
+                    <input type="date" class="form-control" id="visitDate">
+                </div>
+                <div class="form-group">
+                    <label for="orderType" data-lang-key="orderType">Order Type</label>
+                    <select class="form-control" id="orderType">
+                        <option value="" data-lang-key="selectOrderType">Select order type</option>
+                        <option value="dine-in" data-lang-key="dineIn">Dine In</option>
+                        <option value="takeaway" data-lang-key="takeaway">Takeaway</option>
+                        <option value="delivery" data-lang-key="delivery">Delivery</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Ratings Section -->
+            <div class="rating-section">
+                <h4 data-lang-key="rateService"><i class="fas fa-star-half-alt" style="color:#ffd700;"></i> Please Rate Your Visit</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="text-center d-block" data-lang-key="overallExperience">Overall Experience</label>
+                        <div class="star-rating" data-rating="overall">
+                            <i class="fas fa-star star" data-value="1"></i><i class="fas fa-star star" data-value="2"></i><i class="fas fa-star star" data-value="3"></i><i class="fas fa-star star" data-value="4"></i><i class="fas fa-star star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="overallRating" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-center d-block" data-lang-key="foodQuality">Food Quality</label>
+                        <div class="star-rating" data-rating="food">
+                             <i class="fas fa-star star" data-value="1"></i><i class="fas fa-star star" data-value="2"></i><i class="fas fa-star star" data-value="3"></i><i class="fas fa-star star" data-value="4"></i><i class="fas fa-star star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="foodRating" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-center d-block" data-lang-key="serviceRating">Service Quality</label>
+                        <div class="star-rating" data-rating="service">
+                             <i class="fas fa-star star" data-value="1"></i><i class="fas fa-star star" data-value="2"></i><i class="fas fa-star star" data-value="3"></i><i class="fas fa-star star" data-value="4"></i><i class="fas fa-star star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="serviceRating" value="0">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feedback Categories -->
+            <div class="form-group">
+                <h4 data-lang-key="whatAspects">What aspects would you like to comment on?</h4>
+                <div class="feedback-categories">
+                    <div class="category-chip" data-category="food" data-lang-key="food"><i class="fas fa-hamburger"></i> Food</div>
+                    <div class="category-chip" data-category="service" data-lang-key="service"><i class="fas fa-user-tie"></i> Service</div>
+                    <div class="category-chip" data-category="cleanliness" data-lang-key="cleanliness"><i class="fas fa-broom"></i> Cleanliness</div>
+                    <div class="category-chip" data-category="pricing" data-lang-key="pricing"><i class="fas fa-dollar-sign"></i> Pricing</div>
+                    <div class="category-chip" data-category="speed" data-lang-key="orderSpeed"><i class="fas fa-clock"></i> Order Speed</div>
+                </div>
+                <input type="hidden" id="selectedCategories" value="">
+            </div>
+            
+            <!-- Detailed Feedback -->
+            <div class="form-group">
+                <textarea class="form-control" id="detailedFeedback" rows="4" placeholder="Share your thoughts, suggestions, or any specific details..." data-lang-key="yourComments"></textarea>
+            </div>
+            
+            <!-- Recommendation -->
+            <div class="form-group">
+                <h4 data-lang-key="wouldRecommend">Would you recommend us to friends and family?</h4>
+                <div class="recommendation-group">
+                    <input type="radio" name="recommendation" id="recommendYes" value="yes">
+                    <label class="recommend-label" for="recommendYes" data-lang-key="yes"><i class="fas fa-thumbs-up"></i> Yes</label>
+                    
+                    <input type="radio" name="recommendation" id="recommendMaybe" value="maybe">
+                    <label class="recommend-label" for="recommendMaybe" data-lang-key="maybe"><i class="fas fa-meh"></i> Maybe</label>
+                    
+                    <input type="radio" name="recommendation" id="recommendNo" value="no">
+                    <label class="recommend-label" for="recommendNo" data-lang-key="no"><i class="fas fa-thumbs-down"></i> No</label>
+                </div>
+            </div>
+            
+            <button type="submit" data-lang-key="submitFeedback"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
+        </form>
+        
+        <div id="feedbackMessage" class="message-box"></div>
+    </div>
+    
+    <script>
+        // Star Rating Functionality
+        document.querySelectorAll('.star-rating').forEach(group => {
+            const stars = group.querySelectorAll('.star');
+            const hiddenInput = document.getElementById(group.dataset.rating + 'Rating');
+            stars.forEach(star => {
+                star.onclick = () => {
+                    const rating = star.dataset.value;
+                    hiddenInput.value = rating;
+                    stars.forEach((s, i) => s.classList.toggle('active', i < rating));
+                };
+            });
+        });
+
+        // Category Selection Functionality
+        const categoryChips = document.querySelectorAll('.category-chip');
+        const categoriesInput = document.getElementById('selectedCategories');
+        categoryChips.forEach(chip => {
+            chip.onclick = () => {
+                chip.classList.toggle('selected');
+                const selected = Array.from(document.querySelectorAll('.category-chip.selected'))
+                                    .map(c => c.dataset.category);
+                categoriesInput.value = selected.join(',');
+            };
+        });
+
+        // Form Submission
+        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                customerName: document.getElementById('customerName').value.trim(),
+                customerEmail: document.getElementById('customerEmail').value.trim(),
+                visitDate: document.getElementById('visitDate').value,
+                orderType: document.getElementById('orderType').value,
+                overallRating: document.getElementById('overallRating').value,
+                foodRating: document.getElementById('foodRating').value,
+                serviceRating: document.getElementById('serviceRating').value,
+                selectedCategories: document.getElementById('selectedCategories').value,
+                detailedFeedback: document.getElementById('detailedFeedback').value.trim(),
+                recommendation: document.querySelector('input[name="recommendation"]:checked')?.value || '',
+                timestamp: new Date().toISOString()
+            };
+
+            const msgBox = document.getElementById('feedbackMessage');
+
+            if (!formData.customerName || formData.overallRating === '0') {
+                msgBox.textContent = 'Please provide your name and an overall star rating.';
+                msgBox.className = 'message-box error';
+                msgBox.style.display = 'block';
+                return;
+            }
+            
+            fetch('http://localhost:3000/api/feedback', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    msgBox.textContent = 'Thank you! Your feedback has been submitted successfully.';
+                    msgBox.className = 'message-box success';
+                    msgBox.style.display = 'block';
+                    document.getElementById('feedbackForm').style.display = 'none';
+                } else {
+                    msgBox.textContent = data.error || 'Submission failed. Please try again.';
+                    msgBox.className = 'message-box error';
+                    msgBox.style.display = 'block';
+                }
+            })
+            .catch(() => {
+                msgBox.textContent = 'Submission failed due to a server error.';
+                msgBox.className = 'message-box error';
+                msgBox.style.display = 'block';
+            });
+        });
+        
+        document.getElementById('visitDate').valueAsDate = new Date();
+    </script>
+
+
+</body>
+</html>

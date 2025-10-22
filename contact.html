@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Dawat Restaurant</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('./assets/imagess/contact.jpg');
+    background-size: 100vh;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .contact-container {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 3rem;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .contact-info, .contact-form {
+    flex: 1 1 300px;
+  }
+
+  .contact-header {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .contact-info p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .contact-info i {
+    margin-right: 0.75rem;
+    color: #ffd700;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transition: 0.3s ease;
+  }
+
+  .form-group input::placeholder, .form-group textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .form-group textarea {
+    min-height: 120px;
+    resize: none;
+  }
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    color: white;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  #contactSuccess {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 15px;
+    font-weight: 600;
+    display: none;
+    text-align: center;
+  }
+
+  #contactSuccess.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+  }
+
+  #contactSuccess.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+  }
+
+  /* NEW BUTTON STYLE */
+  .home-button {
+    display: none; /* Hidden by default */
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(45deg, #2193b0, #6dd5ed);
+    color: white;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+  }
+
+  .home-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  iframe {
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    height: 250px;
+    margin-top: 1rem;
+  }
+
+  @media(max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+    }
+  }
+</style>
+<script src="assets/js/language.js" defer></script>
+</head>
+<body>
+
+<div class="contact-container">
+  <div class="contact-info">
+    <h2 class="contact-header" data-lang-key="contactUsTitle">Contact Us</h2>
+    <p data-lang-key="contactAddress"><i class="fas fa-map-marker-alt"></i> 123 Main Street, City, Country</p>
+    <p data-lang-key="contactPhone"><i class="fas fa-phone"></i> +91 234567890</p>
+    <p data-lang-key="contactEmail"><i class="fas fa-envelope"></i> contact@dawatrestro.com</p>
+    <iframe src="https://maps.google.com/maps?q=Mumbai&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+  </div>
+
+  <div class="contact-form">
+    <h2 class="contact-header" data-lang-key="sendMessage">Send a Message</h2>
+    <form id="contactForm" novalidate>
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required data-lang-key="yourName">
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required data-lang-key="yourEmail">
+      </div>
+      <div class="form-group">
+        <input type="text" name="subject" placeholder="Subject" required data-lang-key="subject">
+      </div>
+      <div class="form-group">
+        <textarea name="message" placeholder="Your Message" required data-lang-key="yourMessage"></textarea>
+      </div>
+      <button type="submit" data-lang-key="sendMessageButton">Send Message</button>
+    </form>
+    <div id="contactSuccess" role="alert" aria-live="polite"></div>
+    <a href="index.html" id="homeBtn" class="home-button" data-lang-key="goHomepage">🏠 Go to Homepage</a>
+  </div>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const formData = {
+    name: this.name.value.trim(),
+    email: this.email.value.trim(),
+    subject: this.subject.value.trim(),
+    message: this.message.value.trim()
+  };
+
+  fetch('http://localhost:3000/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  })
+  .then(res => res.json())
+  .then(data => {
+    const msgBox = document.getElementById('contactSuccess');
+    if(data.message){
+      msgBox.textContent = 'Your message has been sent successfully!';
+      msgBox.className = 'success';
+      msgBox.style.display = 'block';
+      
+      // Hide the form
+      document.getElementById('contactForm').style.display = 'none';
+      
+      // NEW: Show the homepage button
+      document.getElementById('homeBtn').style.display = 'block';
+    } else {
+      msgBox.textContent = data.error || 'Failed to send message.';
+      msgBox.className = 'error';
+      msgBox.style.display = 'block';
+    }
+  })
+  .catch(() => {
+    const msgBox = document.getElementById('contactSuccess');
+    msgBox.textContent = 'Server error. Please try again later.';
+    msgBox.className = 'error';
+    msgBox.style.display = 'block';
+  });
+});
+</script>
+
+</body>
+</html>
