@@ -18,9 +18,6 @@ Here is an attractive, comprehensive README.md file for your GitHub project, com
 | ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/logindawat.png) | ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/reservationdawat.png) |
 | ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/signupdawat.png) | ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/feedbackdawat.png) |
 
-| Contact & Footer |
-| :---: | :---: |
-| \<img src="contactdawat.jpg" alt="Contact Page" width="400"\> | \<img src="footer.png" alt="Footer CTA" width="400"\> |
 
 ## ✨ Key Features
 
@@ -105,6 +102,7 @@ All endpoints are hosted at `http://localhost:3000`.
 | `POST` | `/api/feedback` | Submits the customer feedback form to the `feedback` table. |
 | `POST` | `/api/reservation`| Submits the table reservation form to the `reservations` table. |
 | `POST` | `/api/contact` | Submits the user contact message to the `contacts` table. |
+
 
 
 
