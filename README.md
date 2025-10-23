@@ -11,12 +11,12 @@ Here is an attractive, comprehensive README.md file for your GitHub project, com
 
 | Homepage | Fast Food Page ("EatU") |
 | :---: | :---: |
-| ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/d28dbe5eabbf8fa33886409c61fa890c0211d0d2/homedawat.png) | \<img src="fastfood.jpg" alt="Fast Food Page" width="400"\> |
+| ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/d28dbe5eabbf8fa33886409c61fa890c0211d0d2/homedawat.png) | ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/fastfood.png) |
 
 | Login & Signup | Reservation & Feedback |
 | :---: | :---: |
-| \<img src="logindawat.jpg" alt="Login Page" width="400"\> | \<img src="reservationdawat.jpg" alt="Reservation Form" width="400"\> |
-| \<img src="signupdawat.jpg" alt="Signup Page" width="400"\> | \<img src="feedbackdawat.jpg" alt="Feedback Form" width="400"\> |
+| ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/logindawat.png) | ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/reservationdawat.png) |
+| ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/signupdawat.png) | ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/63fac3c4f24583ef61c1ad7f8e5fed913c4354cc/feedbackdawat.png) |
 
 | Contact & Footer |
 | :---: | :---: |
@@ -105,6 +105,7 @@ All endpoints are hosted at `http://localhost:3000`.
 | `POST` | `/api/feedback` | Submits the customer feedback form to the `feedback` table. |
 | `POST` | `/api/reservation`| Submits the table reservation form to the `reservations` table. |
 | `POST` | `/api/contact` | Submits the user contact message to the `contacts` table. |
+
 
 
 
