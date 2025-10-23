@@ -11,7 +11,7 @@ Here is an attractive, comprehensive README.md file for your GitHub project, com
 
 | Homepage | Fast Food Page ("EatU") |
 | :---: | :---: |
-| [image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/b6d0b53be63e79f708e579b58b3de7429b892b4b/homedawat.png) | \<img src="fastfood.jpg" alt="Fast Food Page" width="400"\> |
+| ![image alt](https://github.com/jaypatil0815/Dawat-Munch/blob/d28dbe5eabbf8fa33886409c61fa890c0211d0d2/homedawat.png) | \<img src="fastfood.jpg" alt="Fast Food Page" width="400"\> |
 
 | Login & Signup | Reservation & Feedback |
 | :---: | :---: |
@@ -105,5 +105,6 @@ All endpoints are hosted at `http://localhost:3000`.
 | `POST` | `/api/feedback` | Submits the customer feedback form to the `feedback` table. |
 | `POST` | `/api/reservation`| Submits the table reservation form to the `reservations` table. |
 | `POST` | `/api/contact` | Submits the user contact message to the `contacts` table. |
+
 
 
